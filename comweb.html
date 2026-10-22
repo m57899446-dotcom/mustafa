@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resin Art | Handmade With Love</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff8fc;
+            color: #333;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 700;
+            color: #b14c86;
+        }
+
+        .logo span {
+            color: #6b4b8a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #b14c86;
+        }
+
+        .cart {
+            position: relative;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            background: #b14c86;
+            color: white;
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO SLIDER ================= */
+
+        .hero {
+            width: 100%;
+            height: 570px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(30, 10, 30, 0.65),
+                rgba(30, 10, 30, 0.10)
+            );
+        }
+
+        .slide-content {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 8%;
+            transform: translateY(-50%);
+            color: white;
+            max-width: 550px;
+        }
+
+        .slide-content h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+        }
+
+        .slide-content p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #d86aa4;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 5;
+            background: rgba(255,255,255,0.25);
+            color: white;
+            border: none;
+            font-size: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 25px;
+        }
+
+        .next {
+            right: 25px;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            background: white;
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background: #d86aa4;
+        }
+
+        /* ================= GENERAL ================= */
+
+        .section {
+            padding: 75px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #713e62;
+        }
+
+        .section-title p {
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 245px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 22px;
+        }
+
+        .product-info h3 {
+            color: #633e59;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .stars {
+            color: #f2ae28;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 21px;
+            font-weight: 700;
+            color: #b14c86;
+            margin-bottom: 15px;
+        }
+
+        .add-btn {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #b14c86, #704b91);
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: #f4e8f1;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .about-image {
+            width: 50%;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+
+        .about-content {
+            width: 50%;
+        }
+
+        .about-content h2 {
+            font-size: 38px;
+            color: #713e62;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .about-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: #b14c86;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        /* ================= REVIEWS ================= */
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .review-card .customer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .customer-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e5b5d1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        .review-card h4 {
+            color: #633e59;
+        }
+
+        .review-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            background: #f7eef6;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+        }
+
+        .contact-info h3 {
+            color: #713e62;
+            font-size: 27px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 22px;
+            align-items: flex-start;
+        }
+
+        .contact-item span {
+            font-size: 23px;
+        }
+
+        .contact-item h4 {
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p {
+            color: #777;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            height: 140px;
+            resize: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            background: #b14c86;
+            color: white;
+            padding: 14px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #2f2030;
+            color: white;
+            padding: 35px 7%;
+            text-align: center;
+        }
+
+        footer h2 {
+            color: #e49bc3;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 430px;
+            max-width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            animation: popup 0.3s ease;
+        }
+
+        @keyframes popup {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 27px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .modal-box h2 {
+            color: #713e62;
+            margin-bottom: 20px;
+        }
+
+        .modal-product {
+            background: #f8edf5;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-product h3 {
+            color: #633e59;
+            margin-bottom: 10px;
+        }
+
+        .modal-price {
+            font-size: 25px;
+            font-weight: 700;
+            color: #b14c86;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quantity button {
+            width: 35px;
+            height: 35px;
+            border: none;
+            background: #b14c86;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .quantity span {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #b14c86, #704b91);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+
+            .about-image,
+            .about-content {
+                width: 100%;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-content h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                gap: 18px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero {
+                height: 500px;
+            }
+
+            .slide-content {
+                left: 6%;
+                right: 6%;
+            }
+
+            .slide-content h1 {
+                font-size: 34px;
+            }
+
+            .slide-content p {
+                font-size: 15px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 55px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .about-image img {
+                height: 300px;
+            }
+
+            .prev,
+            .next {
+                width: 40px;
+                height: 40px;
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Resin<span>Art</span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#reviews">Customers</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+
+        <div class="cart">
+            🛒
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    </nav>
+
+
+    <!-- ================= HERO SLIDER ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1600&q=80">
+
+            <div class="slide-content">
+                <h1>Beautiful Resin Art</h1>
+                <p>Handmade resin art created with love, creativity and beautiful colors.</p>
+                <a href="#products" class="hero-btn">Explore Products</a>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=1600&q=80">
+
+            <div class="slide-content">
+                <h1>Resin Cups & Coasters</h1>
+                <p>Make your kitchen beautiful with our unique handmade resin creations.</p>
+                <a href="#products" class="hero-btn">Shop Now</a>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=1600&q=80">
+
+            <div class="slide-content">
+                <h1>Made Just For You</h1>
+                <p>Every piece is special, colorful and handmade.</p>
+                <a href="#about" class="hero-btn">Learn More</a>
+            </div>
+        </div>
+
+        <button class="prev" onclick="changeSlide(-1)">❮</button>
+        <button class="next" onclick="changeSlide(1)">❯</button>
+
+        <div class="dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="section" id="products">
+
+        <div class="section-title">
+            <h2>Our Resin Products</h2>
+            <p>Beautiful handmade creations for your home</p>
+        </div>
+
+        <div class="products">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?auto=format&fit=crop&w=800&q=80">
+                </div>
+
+                <div class="product-info">
+                    <h3>Resin Coffee Cup</h3>
+                    <p>Beautiful handmade resin cup.</p>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">Rs. 1,500</div>
+
+                    <button class="add-btn"
+                        onclick="openModal('Resin Coffee Cup', 1500)">
+                        Add to Cart
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Product 2 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1572119865084-43c285814d63?auto=format&fit=crop&w=800&q=80">
+                </div>
+
+                <div class="product-info">
+                    <h3>Resin Coaster Set</h3>
+                    <p>Elegant handmade coaster set.</p>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">Rs. 1,200</div>
+
+                    <button class="add-btn"
+                        onclick="openModal('Resin Coaster Set', 1200)">
+                        Add to Cart
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Product 3 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80">
+                </div>
+
+                <div class="product-info">
+                    <h3>Resin Serving Tray</h3>
+                    <p>Stylish tray for your kitchen.</p>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">Rs. 3,500</div>
+
+                    <button class="add-btn"
+                        onclick="openModal('Resin Serving Tray', 3500)">
+                        Add to Cart
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Product 4 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80">
+                </div>
+
+                <div class="product-info">
+                    <h3>Resin Table Decor</h3>
+                    <p>Beautiful decorative resin art.</p>
+                    <div class="stars">★★★★☆</div>
+                    <div class="price">Rs. 2,500</div>
+
+                    <button class="add-btn"
+                        onclick="openModal('Resin Table Decor', 2500)">
+                        Add to Cart
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Product 5 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=800&q=80">
+                </div>
+
+                <div class="product-info">
+                    <h3>Resin Key Holder</h3>
+                    <p>Creative handmade wall decoration.</p>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">Rs. 1,800</div>
+
+                    <button class="add-btn"
+                        onclick="openModal('Resin Key Holder', 1800)">
+                        Add to Cart
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Product 6 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80">
+                </div>
+
+                <div class="product-info">
+                    <h3>Resin Jewelry Box</h3>
+                    <p>Premium handmade jewelry box.</p>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">Rs. 2,800</div>
+
+                    <button class="add-btn"
+                        onclick="openModal('Resin Jewelry Box', 2800)">
+                        Add to Cart
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT US ================= -->
+
+    <section class="section about" id="about">
+
+        <div class="about-container">
+
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1000&q=80">
+            </div>
+
+            <div class="about-content">
+
+                <h2>About ResinArt</h2>
+
+                <p>
+                    Welcome to ResinArt, where creativity meets beautiful
+                    handmade design. We create unique resin products for
+                    your kitchen, home and special occasions.
+                </p>
+
+                <p>
+                    Har product ko carefully handmade kiya jata hai,
+                    is liye hamara har piece unique aur special hota hai.
+                    Hamara goal high-quality aur beautiful resin art
+                    customers tak pohanchana hai.
+                </p>
+
+                <p>
+                    Aap apne favorite colors aur designs ke sath
+                    customized products bhi order kar sakte hain.
+                </p>
+
+                <a href="#contact" class="about-btn">Contact Us</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CUSTOMER REVIEWS ================= -->
+
+    <section class="section" id="reviews">
+
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Hamare customers ka feedback</p>
+        </div>
+
+        <div class="reviews">
+
+            <div class="review-card">
+
+                <div class="customer">
+                    <div class="customer-icon">👩</div>
+
+                    <div>
+                        <h4>Ayesha</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+
+                <p>
+                    "Maine Resin Coffee Cup order kiya tha.
+                    Quality bohat achi thi aur design bhi beautiful tha.
+                    Definitely recommended!"
+                </p>
+
+                <br>
+
+                <small>Purchased: Resin Coffee Cup</small>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="customer">
+                    <div class="customer-icon">👨</div>
+
+                    <div>
+                        <h4>Ahmed</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+
+                <p>
+                    "Coaster set bohat beautiful tha.
+                    Packaging bhi achi thi aur product bilkul
+                    picture jaisa mila."
+                </p>
+
+                <br>
+
+                <small>Purchased: Resin Coaster Set</small>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="customer">
+                    <div class="customer-icon">👩</div>
+
+                    <div>
+                        <h4>Sara</h4>
+                        <div class="stars">★★★★☆</div>
+                    </div>
+                </div>
+
+                <p>
+                    "Serving tray ka design bohat unique hai.
+                    Mere kitchen ko aur bhi beautiful bana diya."
+                </p>
+
+                <br>
+
+                <small>Purchased: Resin Serving Tray</small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT US ================= -->
+
+    <section class="section contact" id="contact">
+
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Humse contact karein</p>
+        </div>
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <h3>Get In Touch</h3>
+
+                <div class="contact-item">
+                    <span>📍</span>
+                    <div>
+                        <h4>Address</h4>
+                        <p>Karachi, Pakistan</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span>📱</span>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+03362301242</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span>📧</span>
+                    <div>
+                        <h4>Email</h4>
+                        <p>resinart@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span>🕒</span>
+                    <div>
+                        <h4>Opening Hours</h4>
+                        <p>Monday - Saturday: 10 AM - 8 PM</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <form class="contact-form" onsubmit="sendMessage(event)">
+
+                <input type="text" placeholder="Your Name" required>
+
+                <input type="email" placeholder="Your Email" required>
+
+                <input type="text" placeholder="Subject" required>
+
+                <textarea placeholder="Write your message..." required></textarea>
+
+                <button class="submit-btn" type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>ResinArt</h2>
+
+        <p>
+            Handmade with ❤️ | Beautiful Resin Art for Your Home
+        </p>
+
+        <p>
+            © 2026 ResinArt. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= ADD TO CART MODAL ================= -->
+
+    <div class="modal" id="cartModal">
+
+        <div class="modal-box">
+
+            <span class="close" onclick="closeModal()">×</span>
+
+            <h2>Add to Cart</h2>
+
+            <div class="modal-product">
+
+                <h3 id="modalProductName">
+                    Product Name
+                </h3>
+
+                <div class="modal-price">
+                    Rs. <span id="modalPrice">0</span>
+                </div>
+
+            </div>
+
+            <div class="quantity">
+
+                <button onclick="decreaseQuantity()">−</button>
+
+                <span id="quantity">1</span>
+
+                <button onclick="increaseQuantity()">+</button>
+
+            </div>
+
+            <p style="margin-bottom:15px;">
+                Total:
+                <strong>
+                    Rs. <span id="totalPrice">0</span>
+                </strong>
+            </p>
+
+            <button class="confirm-btn" onclick="confirmCart()">
+                Confirm Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ================= MOBILE MENU ================= */
+
+        function toggleMenu() {
+
+            document
+                .getElementById("navLinks")
+                .classList.toggle("active");
+
+        }
+
+
+        /* ================= SLIDER ================= */
+
+        let slideIndex = 0;
+
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+
+        function showSlide(index) {
+
+            slides.forEach(slide => {
+                slide.classList.remove("active");
+            });
+
+            dots.forEach(dot => {
+                dot.classList.remove("active");
+            });
+
+            if (index >= slides.length) {
+                slideIndex = 0;
+            }
+
+            if (index < 0) {
+                slideIndex = slides.length - 1;
+            }
+
+            slides[slideIndex].classList.add("active");
+            dots[slideIndex].classList.add("active");
+        }
+
+
+        function changeSlide(direction) {
+
+            slideIndex += direction;
+
+            showSlide(slideIndex);
+
+        }
+
+
+        function currentSlide(index) {
+
+            slideIndex = index;
+
+            showSlide(slideIndex);
+
+        }
+
+
+        /* Automatic Slider */
+
+        setInterval(function() {
+
+            slideIndex++;
+
+            showSlide(slideIndex);
+
+        }, 5000);
+
+
+        /* ================= CART MODAL ================= */
+
+        let selectedProduct = "";
+        let selectedPrice = 0;
+        let quantity = 1;
+
+        let cartTotalItems = 0;
+
+
+        function openModal(productName, price) {
+
+            selectedProduct = productName;
+            selectedPrice = price;
+            quantity = 1;
+
+            document.getElementById("modalProductName")
+                .innerText = productName;
+
+            document.getElementById("modalPrice")
+                .innerText = price.toLocaleString();
+
+            document.getElementById("quantity")
+                .innerText = quantity;
+
+            updateTotal();
+
+            document.getElementById("cartModal")
+                .classList.add("show");
+
+        }
+
+
+        function closeModal() {
+
+            document.getElementById("cartModal")
+                .classList.remove("show");
+
+        }
+
+
+        function increaseQuantity() {
+
+            quantity++;
+
+            document.getElementById("quantity")
+                .innerText = quantity;
+
+            updateTotal();
+
+        }
+
+
+        function decreaseQuantity() {
+
+            if (quantity > 1) {
+
+                quantity--;
+
+                document.getElementById("quantity")
+                    .innerText = quantity;
+
+                updateTotal();
+
+            }
+
+        }
+
+
+        function updateTotal() {
+
+            let total = selectedPrice * quantity;
+
+            document.getElementById("totalPrice")
+                .innerText = total.toLocaleString();
+
+        }
+
+
+        function confirmCart() {
+
+            cartTotalItems += quantity;
+
+            document.getElementById("cartCount")
+                .innerText = cartTotalItems;
+
+            alert(
+                selectedProduct +
+                " cart mein add ho gaya!\n\n" +
+                "Quantity: " + quantity +
+                "\nTotal: Rs. " +
+                (selectedPrice * quantity).toLocaleString()
+            );
+
+            closeModal();
+
+        }
+
+
+        /* ================= CONTACT FORM ================= */
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Thank you! Aapka message successfully send ho gaya."
+            );
+
+            event.target.reset();
+
+        }
+
+
+        /* ================= CLOSE MODAL OUTSIDE ================= */
+
+        window.onclick = function(event) {
+
+            const modal =
+                document.getElementById("cartModal");
+
+            if (event.target === modal) {
+
+                closeModal();
+
+            }
+
+        };
+
+    </script>
+
+</body>
+</html>

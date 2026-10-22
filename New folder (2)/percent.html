@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obtainmark = +prompt("enter your obtain mark")
+        var tmark= +prompt("enter your total marks")
+        var percent = obtainmark/tmark*100
+        if(percent >= 80){
+            document.write(percent +"<br>"+"A+")
+        }
+        else if(percent < 80 && percent >= 70){
+           document.write(percent +"<br>"+"A")  
+        }
+        else if(percent < 70 && percent >=60){
+           document.write(percent +"<br>"+"B")  
+        }
+    else{
+         document.write(percent +"<br>"+"go to home :(")  
+        }
+
+    </script>
+    
+</body>
+</html>

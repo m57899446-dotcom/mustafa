@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafe Lamp</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f8f3ed;
+    }
+
+    .navbar {
+      width: 100%;
+      height: 75px;
+      background: #3b2416;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: #d6a15d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #d6a15d;
+    }
+
+    .nav-btn {
+      background: #d6a15d;
+      color: #3b2416 !important;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    .nav-btn:hover {
+      background: #fff;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      .navbar {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+    
+  .coffee-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 40px;
+    background: #f8f3ed;
+  }
+
+  .coffee-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+  }
+
+  .coffee-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .coffee-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .coffee-card h2 {
+    color: #3b2416;
+    margin: 15px 0 8px;
+  }
+
+  .coffee-card p {
+    color: #777;
+    margin-bottom: 12px;
+  }
+
+  .price {
+    color: #b87932;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  .coffee-card button {
+    background: #3b2416;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+  .coffee-card button:hover {
+    background: #d6a15d;
+    color: #3b2416;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .coffee-container {
+      grid-template-columns: 1fr;
+    }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Rating Summary */
+.rating-summary {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.rating-number {
+    text-align: center;
+}
+
+.rating-number h2 {
+    font-size: 55px;
+    color: #ffb400;
+}
+
+.stars {
+    color: #ffb400;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.total-reviews {
+    color: #777;
+    margin-top: 8px;
+}
+
+/* Rating Bars */
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.rating-row span:first-child {
+    width: 45px;
+}
+
+.bar {
+    height: 10px;
+    background: #e5e5e5;
+    border-radius: 10px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #ffb400;
+    width: 0%;
+}
+
+/* Review Form */
+.review-form {
+    background: white;
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.review-form h2 {
+    margin-bottom: 20px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Star Input */
+.star-input {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.star-input span {
+    font-size: 35px;
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.star-input span.active,
+.star-input span:hover {
+    color: #ffb400;
+}
+
+.submit-btn {
+    background: #111827;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.submit-btn:hover {
+    background: #000;
+}
+
+/* Reviews Header */
+.reviews-header {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reviews-header select {
+    width: 180px;
+    margin: 0;
+}
+
+/* Review Card */
+.review-card {
+    background: white;
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    background: #111827;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.customer-name {
+    font-weight: bold;
+}
+
+.verified {
+    color: #159447;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.review-stars {
+    color: #ffb400;
+    font-size: 20px;
+}
+
+.review-text {
+    margin: 15px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+.review-footer {
+    display: flex;
+    gap: 15px;
+    color: #777;
+    font-size: 14px;
+}
+
+.helpful,
+.delete {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #555;
+}
+
+.helpful:hover {
+    color: #111;
+}
+
+.delete {
+    color: #d33;
+}
+
+.empty {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+
+/* Responsive */
+@media(max-width: 700px) {
+    .rating-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .reviews-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .reviews-header select {
+        width: 100%;
+    }
+
+    .review-top {
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+   *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body{
+    background:#f7f7f7;
+}
+
+
+.contact-section{
+    width:100%;
+    padding:60px 10%;
+}
+
+
+.contact-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+
+.contact-title h1{
+    font-size:40px;
+    color:#222;
+}
+
+
+.contact-title p{
+    color:#777;
+    margin-top:10px;
+}
+
+
+.contact-container{
+    display:flex;
+    gap:40px;
+    justify-content:center;
+}
+
+
+.contact-info,
+.contact-form{
+    background:white;
+    padding:30px;
+    width:50%;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+
+.contact-info h2,
+.contact-form h2{
+    margin-bottom:25px;
+    color:#333;
+}
+
+
+.info{
+    display:flex;
+    gap:15px;
+    margin:20px 0;
+    align-items:center;
+}
+
+
+.info i{
+    font-size:22px;
+    color:#ff416c;
+}
+
+
+.social a{
+    font-size:25px;
+    margin-right:15px;
+    color:#ff416c;
+}
+
+
+.contact-form input,
+.contact-form textarea{
+
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    outline:none;
+
+}
+
+
+.contact-form textarea{
+    height:120px;
+    resize:none;
+}
+
+
+button{
+
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff416c,#ff4b2b);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+
+}
+
+
+button:hover{
+    opacity:0.8;
+}
+
+
+
+/* Responsive */
+
+@media(max-width:768px){}
+
+
+.contact-container{
+    flex-direction:column;
+}
+
+
+.contact-info,
+.contact-form{
+    width:100%;
+}
+
+.contact-title h1{
+    font-size:30px;
+}
+
+     
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+
+    <div class="logo">
+      <div class="logo-icon">☕</div>
+      Cafe Lamp
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Menu</a></li>
+      <li><a href="#">About</a></li>
+       <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#" class="nav-btn">Order Now</a></li>
+    </ul>
+
+  </nav>
+  <div class="coffee-container">
+
+  <!-- Card 1 -->
+  <div class="coffee-card">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Cappuccino">
+    <h2>Cappuccino</h2>
+    <p>Rich and creamy coffee</p>
+    <div class="price">$4.50</div>
+    <button>Order Now</button>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="coffee-card">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" alt="Latte">
+    <h2>Cafe Latte</h2>
+    <p>Smooth coffee with milk</p>
+    <div class="price">$5.00</div>
+    <button>Order Now</button>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="coffee-card">
+    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Espresso">
+    <h2>Espresso</h2>
+    <p>Strong and classic coffee</p>
+    <div class="price">$3.50</div>
+    <button>Order Now</button>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="coffee-card">
+    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80" alt="Iced Coffee">
+    <h2>Iced Coffee</h2>
+    <p>Cold and refreshing coffee</p>
+    <div class="price">$4.00</div>
+    <button>Order Now</button>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="coffee-card">
+    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Mocha">
+    <h2>Mocha</h2>
+    <p>Chocolate and coffee mix</p>
+    <div class="price">$5.50</div>
+    <button>Order Now</button>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="coffee-card">
+    <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=600&q=80" alt="Americano">
+    <h2>Americano</h2>
+    <p>Classic smooth black coffee</p>
+    <div class="price">$3.80</div>
+    <button>Order Now</button>
+  </div>
+
+</div>
+<div class="container">
+
+    <h1>Customer Reviews</h1>
+
+    <!-- Rating Summary -->
+    <div class="rating-summary">
+
+        <div class="rating-number">
+            <h2 id="averageRating">0.0</h2>
+            <div class="stars" id="averageStars">★★★★★</div>
+            <div class="total-reviews">
+                <span id="totalReviews">0</span> reviews
+            </div>
+        </div>
+
+        <div class="rating-bars">
+
+            <div class="rating-row">
+                <span>5 ⭐</span>
+                <div class="bar">
+                    <div class="bar-fill" id="bar5"></div>
+                </div>
+                <span id="count5">0</span>
+            </div>
+
+            <div class="rating-row">
+                <span>4 ⭐</span>
+                <div class="bar">
+                    <div class="bar-fill" id="bar4"></div>
+                </div>
+                <span id="count4">0</span>
+            </div>
+
+            <div class="rating-row">
+                <span>3 ⭐</span>
+                <div class="bar">
+                    <div class="bar-fill" id="bar3"></div>
+                </div>
+                <span id="count3">0</span>
+            </div>
+
+            <div class="rating-row">
+                <span>2 ⭐</span>
+                <div class="bar">
+                    <div class="bar-fill" id="bar2"></div>
+                </div>
+                <span id="count2">0</span>
+            </div>
+
+            <div class="rating-row">
+                <span>1 ⭐</span>
+                <div class="bar">
+                    <div class="bar-fill" id="bar1"></div>
+                </div>
+                <span id="count1">0</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Review Form -->
+    <div class="review-form">
+
+        <h2>Write a Review</h2>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Your name"
+        >
+
+        <div class="star-input" id="starInput">
+            <span data-rating="1">★</span>
+            <span data-rating="2">★</span>
+            <span data-rating="3">★</span>
+            <span data-rating="4">★</span>
+            <span data-rating="5">★</span>
+        </div>
+
+        <textarea
+            id="reviewText"
+            placeholder="Write your review..."
+        ></textarea>
+
+        <button class="submit-btn" onclick="addReview()">
+            Submit Review
+        </button>
+
+    </div>
+
+    <!-- Reviews -->
+    <div class="reviews-header">
+        <h2>Reviews</h2>
+
+        <select id="sortReviews" onchange="renderReviews()">
+            <option value="newest">Newest</option>
+            <option value="highest">Highest Rating</option>
+            <option value="lowest">Lowest Rating</option>
+            <option value="helpful">Most Helpful</option>
+        </select>
+    </div>
+
+    <div id="reviewsList"></div>
+
+</div>
+ <section class="contact-section">
+
+    <div class="contact-title">
+        <h1>Contact Us</h1>
+        <p>We would love to hear from you. Feel free to contact us anytime.</p>
+    </div>
+
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <h2>Get In Touch</h2>
+
+            <div class="info">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Karachi, Pakistan</p>
+            </div>
+
+            <div class="info">
+                <i class="fa-solid fa-phone"></i>
+                <p>+92 300 1234567</p>
+            </div>
+
+            <div class="info">
+                <i class="fa-solid fa-envelope"></i>
+                <p>fashionstore@gmail.com</p>
+            </div>
+
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+
+        </div>
+
+
+        <div class="contact-form">
+
+            <h2>Send Message</h2>
+
+            <form>
+
+                <input type="text" placeholder="Your Name">
+
+                <input type="email" placeholder="Your Email">
+
+                <input type="text" placeholder="Subject">
+
+                <textarea placeholder="Your Message"></textarea>
+
+                <button type="submit">Send Message</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+/* Initial Reviews */
+let reviews = JSON.parse(localStorage.getItem("customerReviews")) || [
+    {
+        id: 1,
+        name: "Ali Khan",
+        rating: 5,
+        text: "Excellent product! Quality bohat achi hai aur delivery bhi fast thi.",
+        date: new Date().toISOString(),
+        helpful: 12,
+        verified: true
+    },
+    {
+        id: 2,
+        name: "Sara Ahmed",
+        rating: 4,
+        text: "Product acha hai. Overall experience good raha.",
+        date: new Date(Date.now() - 86400000).toISOString(),
+        helpful: 5,
+        verified: true
+    },
+    {
+        id: 3,
+        name: "Usman",
+        rating: 5,
+        text: "Very good quality. Definitely recommended!",
+        date: new Date(Date.now() - 172800000).toISOString(),
+        helpful: 8,
+        verified: true
+    }
+];
+
+let selectedRating = 0;
+
+/* Star Selection */
+document.querySelectorAll("#starInput span").forEach(star => {
+
+    star.addEventListener("click", function() {
+
+        selectedRating = Number(this.dataset.rating);
+
+        document.querySelectorAll("#starInput span").forEach(s => {
+            s.classList.remove("active");
+        });
+
+        for(let i = 0; i < selectedRating; i++) {
+            document.querySelectorAll("#starInput span")[i]
+                .classList.add("active");
+        }
+
+    });
+
+});
+
+/* Add Review */
+function addReview() {
+
+    const name = document.getElementById("name").value.trim();
+    const text = document.getElementById("reviewText").value.trim();
+
+    if(!name) {
+        alert("Please enter your name.");
+        return;
+    }
+
+    if(selectedRating === 0) {
+        alert("Please select a star rating.");
+        return;
+    }
+
+    if(!text) {
+        alert("Please write your review.");
+        return;
+    }
+
+    const newReview = {
+        id: Date.now(),
+        name: name,
+        rating: selectedRating,
+        text: text,
+        date: new Date().toISOString(),
+        helpful: 0,
+        verified: false
+    };
+
+    reviews.push(newReview);
+
+    saveReviews();
+
+    document.getElementById("name").value = "";
+    document.getElementById("reviewText").value = "";
+
+    selectedRating = 0;
+
+    document.querySelectorAll("#starInput span")
+        .forEach(s => s.classList.remove("active"));
+
+    renderReviews();
+
+    alert("Your review has been submitted!");
+}
+
+/* Save Reviews */
+function saveReviews() {
+    localStorage.setItem(
+        "customerReviews",
+        JSON.stringify(reviews)
+    );
+}
+
+/* Render Reviews */
+function renderReviews() {
+
+    const list = document.getElementById("reviewsList");
+    const sort = document.getElementById("sortReviews").value;
+
+    let sortedReviews = [...reviews];
+
+    if(sort === "newest") {
+        sortedReviews.sort(
+            (a,b) => new Date(b.date) - new Date(a.date)
+        );
+    }
+
+    if(sort === "highest") {
+        sortedReviews.sort(
+            (a,b) => b.rating - a.rating
+        );
+    }
+
+    if(sort === "lowest") {
+        sortedReviews.sort(
+            (a,b) => a.rating - b.rating
+        );
+    }
+
+    if(sort === "helpful") {
+        sortedReviews.sort(
+            (a,b) => b.helpful - a.helpful
+        );
+    }
+
+    if(sortedReviews.length === 0) {
+        list.innerHTML =
+            `<div class="empty">No reviews yet.</div>`;
+        updateSummary();
+        return;
+    }
+
+    list.innerHTML = sortedReviews.map(review => {
+
+        const stars = "★".repeat(review.rating) +
+                      "☆".repeat(5 - review.rating);
+
+        const date = new Date(review.date)
+            .toLocaleDateString();
+
+        const initial = review.name
+            .charAt(0)
+            .toUpperCase();
+
+        return `
+            <div class="review-card">
+
+                <div class="review-top">
+
+                    <div class="customer">
+
+                        <div class="avatar">
+                            ${initial}
+                        </div>
+
+                        <div>
+                            <div class="customer-name">
+                                ${escapeHTML(review.name)}
+                            </div>
+
+                            ${
+                                review.verified
+                                ? `<div class="verified">
+                                    ✓ Verified Customer
+                                   </div>`
+                                : ""
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="review-stars">
+                        ${stars}
+                    </div>
+
+                </div>
+
+                <div class="review-text">
+                    ${escapeHTML(review.text)}
+                </div>
+
+                <div class="review-footer">
+
+                    <span>${date}</span>
+
+                    <button
+                        class="helpful"
+                        onclick="makeHelpful(${review.id})">
+                        👍 Helpful (${review.helpful})
+                    </button>
+
+                    <button
+                        class="delete"
+                        onclick="deleteReview(${review.id})">
+                        Delete
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+    }).join("");
+
+    updateSummary();
+}
+
+/* Helpful */
+function makeHelpful(id) {
+
+    const review = reviews.find(r => r.id === id);
+
+    if(review) {
+        review.helpful++;
+        saveReviews();
+        renderReviews();
+    }
+}
+
+/* Delete */
+function deleteReview(id) {
+
+    const confirmDelete =
+        confirm("Are you sure you want to delete this review?");
+
+    if(!confirmDelete) return;
+
+    reviews = reviews.filter(
+        review => review.id !== id
+    );
+
+    saveReviews();
+    renderReviews();
+}
+
+/* Rating Summary */
+function updateSummary() {
+
+    const total = reviews.length;
+
+    document.getElementById("totalReviews")
+        .textContent = total;
+
+    if(total === 0) {
+
+        document.getElementById("averageRating")
+            .textContent = "0.0";
+
+        updateBars([0,0,0,0,0]);
+
+        return;
+    }
+
+    const totalScore = reviews.reduce(
+        (sum, review) => sum + review.rating,
+        0
+    );
+
+    const average = totalScore / total;
+
+    document.getElementById("averageRating")
+        .textContent = average.toFixed(1);
+
+    const counts = [0,0,0,0,0];
+
+    reviews.forEach(review => {
+        counts[review.rating - 1]++;
+    });
+
+    for(let rating = 1; rating <= 5; rating++) {
+
+        const count = counts[rating - 1];
+
+        document.getElementById("count" + rating)
+            .textContent = count;
+
+        const percentage = (count / total) * 100;
+
+        document.getElementById("bar" + rating)
+            .style.width = percentage + "%";
+    }
+}
+
+/* Bars */
+function updateBars(counts) {
+
+    for(let rating = 1; rating <= 5; rating++) {
+
+        document.getElementById("count" + rating)
+            .textContent = 0;
+
+        document.getElementById("bar" + rating)
+            .style.width = "0%";
+    }
+}
+
+/* Security */
+function escapeHTML(text) {
+
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+/* Start */
+renderReviews();
+
+</script>
+
+
+  
+
+</body>
+</html>

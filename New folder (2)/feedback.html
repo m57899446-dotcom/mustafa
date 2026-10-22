@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .container{
+            margin-top: 20%;
+            height: 500px;
+        }
+        .col{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 300px;
+            background-color: rgb(230, 221, 221);
+            border-radius: 40px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 3px 2px 5px black;
+            transition: border-radius 0.10s ease-in 0.7s;
+        }
+        .col:hover{
+            border-radius: 50px 0px 30px 0px;
+        }
+        .btn{
+            margin-top: 10px;
+            background: linear-gradient(to top,rgb(219, 72, 96),rgb(192, 207, 55),rgb(41, 139, 196));
+            color: rgb(157, 210, 228);
+            width: 100px;
+            border-radius: 40px 20px 8px 20px;
+       
+        }
+        .fa-star{
+            font-size: 26px;
+            transition: transform 0.5s ease;
+        }
+        .fa-star:hover{
+            transform: scale(1.25) rotate(30deg);
+            color: rgb(223, 226, 12);
+        }
+        .selected{
+            color: rgba(226, 193, 7, 0.849);
+        }
+    </style>
+</head>
+<body>
+    <center>
+     <div class="container">
+       
+        <div class="col">
+            <div><h1>Feedback</h1></div>
+        <div>
+           <i class="fa-solid fa-star" onclick="sellectstar(1)"></i>
+           <i class="fa-solid fa-star" onclick="sellectstar(2)"></i>
+              <i class="fa-solid fa-star" onclick="sellectstar(3)"></i>
+              <i class="fa-solid fa-star" onclick="sellectstar(4)"></i>
+              <i class="fa-solid fa-star" onclick="sellectstar(5)"></i>
+        </div>
+        <div><button class="btn">Submit</button></div>
+
+        </div>
+     </div>
+</center>
+
+<script>
+    function sellectstar(rating){
+        var allstar=document.querySelectorAll(".fa-star")
+        for(var i=0; i < rating; i++){
+            allstar[i].classList.add("selected")
+        }
+    }
+</script>
+    
+</body>
+</html>

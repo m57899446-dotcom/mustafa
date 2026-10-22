@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            border-radius: 20px;
+            background: linear-gradient(to right ,black,gray);
+            width: 100px;
+            height: 50px;
+            color: chocolate;
+        }
+        .darktheme{
+          background-color: black; 
+          color: white !important;      
+        }
+        .lightthme{
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body class="lightthme" id="main">
+    <p>dark theme</p>
+    <p id="my">  </p>
+    <button onclick="party()"> click me </button>
+
+    <button onclick="dark()">dark mode</button>
+    <button onclick="light()">light mode</button>
+    <script>
+        function party(){
+            document.getElementById("my").innerHTML="party start on 5:30"
+        }
+        function dark (){
+            var removeclass= document.getElementById("main");
+            removeclass.classList.remove("lightthme")
+            removeclass.classList.add("darktheme")
+        }
+        function light (){
+            var removeclass= document.getElementById("main");
+            removeclass.classList.remove("darktheme")
+            removeclass.classList.add("lightthme")
+        }
+    </script>
+
+     
+     
+    
+</body>
+</html>
